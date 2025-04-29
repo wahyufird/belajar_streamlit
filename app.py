@@ -4,7 +4,7 @@ import numpy as np
 import plotly.figure_factory as ff
 
 
-st.title("Welcome to My Portfolio")
+st.title("WELCOME to My Portfolio")
 
 st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
