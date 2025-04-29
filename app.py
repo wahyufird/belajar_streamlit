@@ -8,7 +8,7 @@ st.title("WELCOME to My Portfolio")
 
 st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
 
-st.write("Please enjoy this site")
+st.write("BISMILLAH Please enjoy this site")
 
 st.write("My name is Wahyu Firdausy")
 st.write("I am Data Scientist")
