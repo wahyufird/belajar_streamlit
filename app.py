@@ -9,7 +9,7 @@ import streamlit as st
 from PIL import Image
 
 # Konfigurasi halaman
-st.set_page_config(page_title="Portfolio Mulyadi", layout="wide", initial_sidebar_state="expanded")
+st.set_page_config(page_title="Portfolio Wahyufird", layout="wide", initial_sidebar_state="expanded")
 
 # Styling CSS manual
 st.markdown("""
