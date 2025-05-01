@@ -2,73 +2,71 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import plotly.figure_factory as ff
+from PIL import Image
+
+    
+import streamlit as st
+from PIL import Image
+
+# Konfigurasi halaman
+st.set_page_config(page_title="Portfolio Mulyadi", layout="wide", initial_sidebar_state="expanded")
+
+# Styling CSS manual
+st.markdown("""
+    <style>
+        body {
+            background-color: #111;
+            color: white;
+        }
+        .main {
+            background-color: #111;
+        }
+        .stRadio > div {
+            flex-direction: column;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+# Sidebar Navigasi
+st.sidebar.title("Navigasi")
+page = st.sidebar.radio("Pilih Halaman:", ["Introduction", "Project", "Contact"])
+
+# === Halaman: Introduction ===
+if page == "Introduction":
+    col1, col2 = st.columns([1, 2])
+
+    with col1:
+        img = Image.open("DSC_3654.png")  # ganti dengan nama file kamu
+        st.image(img, caption="Data Scientist", width=250)
+
+    with col2:
+        st.markdown("## Hello, I am Wahyufird")
+        st.markdown("""
+        I’m a **<span style='color:#FF4B4B'>Data Scientist</span>** who truly believes that every dataset has a story to tell.
+
+For me, data isn’t just about numbers — it’s about meaning. It’s about uncovering hidden patterns, finding clarity in chaos, and transforming raw information into insights that actually make a difference.
+
+I love diving into complex problems, exploring messy datasets, and turning them into something simple, beautiful, and impactful. Whether it’s through engaging visuals, smart analysis, or just explaining things in a way people really get — that’s what excites me the most.
+
+If you're curious about what I do, feel free to check out the **<span style='color:#FF4B4B'>Projects</span>** section. You might just find something interesting — or even a reason to collaborate!
+        """, unsafe_allow_html=True)
+
+    
+# === Halaman: Project ===
+elif page == "Project":
+    st.markdown("## 🚀 Project Showcase")
+    st.write("Berikut beberapa proyek yang pernah saya kerjakan:")
+    st.markdown("""
+    - **YOLOv9 Mangrove Detection** - Deteksi propagul siap tanam.
+    - **Silat Movement Detector** - Deteksi tendangan dan pukulan silat berbasis video.
+    - **Money Flow Analyzer** - Dashboard analisis aliran dana saham IDX.
+    """)
+
+# === Halaman: Contact ===
+elif page == "Contact":
+    st.markdown("## 📬 Contact Me")
+    st.write("📧 Email: your.email@example.com")
+    st.write("🔗 LinkedIn: [linkedin.com/in/yourname](https://linkedin.com)")
+    st.write("💻 GitHub: [github.com/yourusername](https://github.com)")
 
 
-st.title("Hello, this is My Portfolio")
-
-st.metric(label="Temperature", value="70 °F", delta="1.2 °F")
-
-st.write("BISMILLAH Please enjoy this site")
-
-st.write("My name is Wahyu Firdausy")
-st.write("I am Data Scientist")
-
-st.title("Thank you!")
-
-
-st.markdown("*Streamlit* is **really** ***cool***.")
-st.markdown('''
-    :red[Streamlit] :orange[can] :green[write] :blue[text] :violet[in]
-    :gray[pretty] :rainbow[colors] and :blue-background[highlight] text.''')
-st.markdown("Here's a bouquet &mdash;\
-            :tulip::cherry_blossom::rose::hibiscus::sunflower::blossom:")
-
-multi = '''If you end a line with two spaces,
-a soft return is used for the next line.
-
-Two (or more) newline characters in a row will result in a hard return.
-'''
-st.markdown(multi)
-
-
-
-df = pd.DataFrame(np.random.randn(50, 20), columns=("col %d" % i for i in range(20)))
-
-st.dataframe(df)  # Same as st.write(df)
-
-df = pd.DataFrame(
-    [
-       {"command": "st.selectbox", "rating": 4, "is_widget": True},
-       {"command": "st.balloons", "rating": 5, "is_widget": False},
-       {"command": "st.time_input", "rating": 3, "is_widget": True},
-   ]
-)
-edited_df = st.data_editor(df)
-
-favorite_command = edited_df.loc[edited_df["rating"].idxmax()]["command"]
-st.markdown(f"Your favorite command is **{favorite_command}** 🎈")
-
-chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
-
-st.area_chart(chart_data)
-
-st.bar_chart(chart_data)
-
-st.line_chart(chart_data)
-
-# Add histogram data
-x1 = np.random.randn(200) - 2
-x2 = np.random.randn(200)
-x3 = np.random.randn(200) + 2
-
-# Group data together
-hist_data = [x1, x2, x3]
-
-group_labels = ['Group 1', 'Group 2', 'Group 3']
-
-# Create distplot with custom bin_size
-fig = ff.create_distplot(
-        hist_data, group_labels, bin_size=[.1, .25, .5])
-
-# Plot!
-st.plotly_chart(fig, use_container_width=True)
